@@ -2,8 +2,10 @@ package main.java.code.draughts.types;
 
 public enum Token {
 
-	TOKEN_X('X'),
-	TOKEN_O('O');
+	WMAN_TOKEN('w'),
+	BMAN_TOKEN('b'),
+	WKING_TOKEN('W'),
+	BKING_TOKEN('B');
 
 	private char character;
 

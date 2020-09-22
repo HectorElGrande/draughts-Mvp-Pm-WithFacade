@@ -30,7 +30,7 @@ public class Game {
     }
 
     public boolean isEmptyOfTokens() {
-        return this.board.isEmptyOfTokens(this.getTypeOfTokenPlayerFromTurn().ordinal());
+        return this.board.isEmptyOfTokens(this.getValueFromTurn());
     }
 
     public void putTokenPlayerFromTurn(Coordinate coordinate) {

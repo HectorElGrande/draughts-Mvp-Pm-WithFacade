@@ -10,17 +10,36 @@ public class Board {
 	private Coordinate[][] coordinates;
 
 	public Board() {
-		this.coordinates = new Coordinate[Turn.NUM_PLAYERS][Coordinate.DIMENSION];
-		for (int i = 0; i < Turn.NUM_PLAYERS; i++) {
-			for (int j = 0; j < Coordinate.DIMENSION; j++) {
+		this.coordinates = new Coordinate[Turn.NUM_PLAYERS][Player.PIECES];
+		/*for (int i = 0; i < Turn.NUM_PLAYERS; i++) {
+			for (int j = 0; j < Player.PIECES; j++) {
 				this.coordinates[i][j] = null;
+			}
+		}*/
+		int contWhite=0;
+		int contBlack=0;
+		for(int row = 0; row < Coordinate.DIMENSION; row++){
+			for(int column = 0; column < Coordinate.DIMENSION; column++) {
+				if(row!=3 && row!=4){
+					if(row<=2){
+						if((row%2==1 && column%2==0) || (row%2==0 && column%2==1)){
+							this.coordinates[0][contWhite] = new Coordinate(row, column);
+							contWhite++;
+						}
+					}else{
+						if((row%2==1 && column%2==0) || (row%2==0 && column%2==1)){
+							this.coordinates[1][contBlack] = new Coordinate(row, column);
+							contBlack++;
+						}
+					}
+				}
 			}
 		}
 	}
 
 	public Token getToken(Coordinate coordinate) {
 		for (int i = 0; i < Turn.NUM_PLAYERS; i++) {
-			for (int j = 0; j < Coordinate.DIMENSION; j++) {
+			for (int j = 0; j < Player.PIECES; j++) {
 				if (this.coordinates[i][j] != null && this.coordinates[i][j].getRow() == coordinate.getRow()
 						&& this.coordinates[i][j].getColumn() == coordinate.getColumn()) {
 					return Token.values()[i];
@@ -49,7 +68,7 @@ public class Board {
 
 	private void remove(Coordinate coordinate) {
 		for (int i = 0; i < Turn.NUM_PLAYERS; i++) {
-			for (int j = 0; j < Coordinate.DIMENSION; j++) {
+			for (int j = 0; j < Player.PIECES; j++) {
 				if (this.coordinates[i][j] != null && this.coordinates[i][j].getRow() == coordinate.getRow()
 						&& this.coordinates[i][j].getColumn() == coordinate.getColumn()) {
 					this.coordinates[i][j] = null;
@@ -105,7 +124,7 @@ public class Board {
 
 	boolean isEmptyOfTokens(int player) {
 		for (int i = 0; i < coordinates[player].length; i++){
-			for (int j = 0; j < Coordinate.DIMENSION; j++) {
+			for (int j = 0; j < Player.PIECES; j++) {
 				if (this.coordinates[i][j] != null) {
 					return false;
 				}

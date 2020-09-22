@@ -6,7 +6,7 @@ import main.java.code.utils.Direction;
 
 public class Coordinate extends main.java.code.utils.Coordinate {
 
-	public static final int DIMENSION = 3;
+	public static final int DIMENSION = 8;
 
 	public Coordinate() {
 		super();
