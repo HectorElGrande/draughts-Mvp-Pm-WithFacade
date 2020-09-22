@@ -6,6 +6,8 @@ import main.java.code.draughts.types.Token;
 
 public class Player {
 
+	public static final int PIECES = 12;
+
 	private Token token;
 
 	private Board board;
